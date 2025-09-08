@@ -34,47 +34,79 @@
 <body>
 
   <!-- Navbar Start -->
-  <nav class="bg-[#15803d]">
-    <div class="max-w-[1920px] h-[70px] mx-auto flex items-center justify-between px-[20px] lg:px-[115px]">
-
-      <!-- Left: Logo -->
+  <nav class="bg-[#15803d] w-full">
+    <div class="max-w-[1920px] mx-auto h-[70px] flex items-center justify-between px-4 sm:px-6 lg:px-20">
+      <!-- Logo -->
       <h1 class="text-white text-xl font-bold">Green Earth</h1>
 
-      <!-- Center: Menu Items -->
+      <!-- Menu Items -->
       <ul class="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 gap-8 text-white font-medium text-base">
         <li>
-          <a href="#about" class="relative group">
-            About
+          <a href="" class="relative group">About
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all group-hover:w-full"></span>
           </a>
         </li>
         <li>
-          <a href="#gallery" class="relative group">
-            Gallery
+          <a href="" class="relative group">Gallery
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all group-hover:w-full"></span>
           </a>
         </li>
         <li>
-          <a href="#tree" class="relative group">
-            Plant a Tree
+          <a href="" class="relative group">Plant a Tree
             <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-white transition-all group-hover:w-full"></span>
           </a>
         </li>
       </ul>
 
-
-
-      <!-- Right: Button -->
+      <!-- Button -->
       <button
-        class="w-[131px] h-[43px] flex justify-center items-center px-5 py-3 rounded-full bg-[#facc15] text-[#15803d] font-medium text-base hover:bg-yellow-400">
+        class="w-[131px] h-[43px] flex justify-center items-center px-4 sm:px-5 rounded-full bg-[#facc15] text-[#15803d] font-medium text-base hover:bg-yellow-400 transition">
         Plant a Tree
       </button>
-
     </div>
   </nav>
   <!-- Navbar End -->
 
+  <!-- Banner Section Start -->
+  <section class="bg-[#cff0dc] w-full h-[315px] flex justify-center items-end px-4 sm:px-6 lg:px-20">
+    <div class="w-full h-full flex items-end justify-center max-w-[1920px] mx-auto">
 
+      <!-- Left Image -->
+      <div class="w-[430px] h-[300px] flex-shrink-0 self-end mr-[70px] hidden sm:block">
+        <img src="./assets/hero-leaf1.png" alt="" class="w-full h-full object-contain">
+      </div>
+
+      <!-- Middle Content -->
+      <div class="flex flex-col justify-center items-center text-center max-w-[600px] h-full py-[100px] px-4">
+        <!-- Title -->
+        <h1 class="text-[#1f2937] text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:whitespace-nowrap">
+          Plant a Tree, Grow a Future
+        </h1>
+
+        <!-- Description -->
+        <p class="text-[#1f2937] text-base sm:text-lg opacity-80 leading-relaxed sm:whitespace-nowrap">
+          Join our mission to plant 1 million trees and make the Earth greener for future <br> generations.
+        </p>
+
+        <!-- Button -->
+        <div class="mt-6">
+          <button
+            class="w-[160px] sm:w-[180px] h-[45px] sm:h-[50px] flex justify-center items-center px-5 py-3 rounded-full bg-[#facc15] text-[#15803d] font-medium hover:bg-yellow-400 transition duration-300">
+            Get Involved
+          </button>
+        </div>
+      </div>
+
+
+
+      <!-- Right Image -->
+      <div class="w-[430px] h-[300px] flex-shrink-0 self-end ml-[70px] hidden sm:block">
+        <img src="./assets/hero-leaf2.png" alt="" class="w-full h-full object-contain">
+      </div>
+
+    </div>
+  </section>
+  <!-- Banner Section End -->
 
 
 
@@ -84,7 +116,8 @@
 
 
   <!-- script js  -->
-  <script src="./script/index.js"></script>
+  <script src=" ./script/index.js">
+  </script>
 </body>
 
 </html>
