@@ -166,8 +166,34 @@ function renderCart() {
   cartTotalEl.textContent = `৳ ${total}`;
 }
 
+// drop-down number of trees 
+const input = document.getElementById("tree-dropdown-input");
+const btn = document.getElementById("tree-dropdown-btn");
+const list = document.getElementById("tree-dropdown-list");
 
+// Toggle dropdown
+btn.addEventListener("click", () => {
+  list.classList.toggle("hidden");
+});
 
+input.addEventListener("click", () => {
+  list.classList.toggle("hidden");
+});
+
+// Select tree name
+list.querySelectorAll("li").forEach(item => {
+  item.addEventListener("click", () => {
+    input.value = item.textContent;
+    list.classList.add("hidden"); // hide after selection
+  });
+});
+
+// Click outside to close
+document.addEventListener("click", function (event) {
+  if (!input.contains(event.target) && !list.contains(event.target) && !btn.contains(event.target)) {
+    list.classList.add("hidden");
+  }
+});
 
 // Initialize
 fetchPlants();

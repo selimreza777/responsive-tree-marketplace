@@ -211,11 +211,24 @@
           <input type="email" placeholder="Your Email Address"
             class="w-full p-3 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
           <div class="relative w-full">
-            <input type="text" placeholder="Number of Trees"
-              class="w-full p-3 pr-10 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-300">
-            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none">
+            <input type="text" id="tree-dropdown-input" placeholder="Number of Trees"
+              class="w-full p-3 pr-10 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-green-300 cursor-pointer"
+              readonly>
+            <span
+              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-auto cursor-pointer"
+              id="tree-dropdown-btn">
               <i class="fa-solid fa-chevron-down"></i>
             </span>
+
+            <!-- Dropdown list -->
+            <ul id="tree-dropdown-list"
+              class="absolute left-0 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-40 overflow-y-auto hidden z-50">
+              <li class="px-3 py-2 hover:bg-green-100 cursor-pointer">Guava Tree</li>
+              <li class="px-3 py-2 hover:bg-green-100 cursor-pointer">Mango Tree</li>
+              <li class="px-3 py-2 hover:bg-green-100 cursor-pointer">Bambo Tree</li>
+              <li class="px-3 py-2 hover:bg-green-100 cursor-pointer">Climber Tree</li>
+              <li class="px-3 py-2 hover:bg-green-100 cursor-pointer">Timber Tree</li>
+            </ul>
           </div>
           <button type="submit"
             class="w-full py-3 mt-2 bg-[#facc15] text-[#15803d] font-medium rounded-full hover:bg-yellow-400 transition duration-300">
