@@ -67,12 +67,12 @@ function displayTrees(plants) {
   plants.forEach(tree => {
     const card = document.createElement("div");
     card.className =
-      "bg-white rounded-lg shadow-md p-4 flex flex-col hover:shadow-lg hover:scale-[1.02] transition-transform cursor-pointer";
+      "bg-white rounded-lg shadow-md p-4 flex flex-col hover:shadow-lg hover:scale-[1.03] transition-transform cursor-pointer w-full h-auto";
 
     card.innerHTML = `
-      <img src="${tree.image}" alt="${tree.name}" class="w-full h-40 object-cover rounded-md mb-4">
+      <img src="${tree.image}" alt="${tree.name}" class="w-full h-32 object-cover rounded-md mb-4">
       <h4 class="text-lg font-semibold text-[#1f2937] mb-2 tree-name">${tree.name}</h4>
-      <p class="text-gray-700 text-sm flex-grow mb-4">${tree.description.slice(0, 80)}...</p>
+      <p class="text-gray-700 text-sm flex-grow mb-4 line-clamp-3">${tree.description}</p>
 
       <div class="flex items-center justify-between mb-2">
         <span class="px-2 py-1 text-sm font-medium text-[#2b803d] bg-[#dcfce7] rounded-md">
