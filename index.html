@@ -89,26 +89,24 @@
   </section>
   <!-- Banner Section End -->
 
-
-
-
-
-
   <!-- Choose Your Trees Section Start -->
   <section class="bg-[#f0fdf4] w-full py-16 relative">
     <div class="w-full max-w-[1920px] mx-auto px-6 lg:px-20 flex flex-col lg:flex-row items-start gap-6">
 
       <!-- Left Sidebar: Categories -->
       <div class="w-full lg:w-1/4 bg-white rounded-lg p-6 shadow-md h-auto flex-shrink-0">
-        <h3 class="text-xl font-semibold text-[#000000] mb-4">Categories</h3>
-        <ul id="categories-list" class="flex flex-col gap-2 font-medium">
+        <h3 class="text-xl font-semibold text-[#000000] mb-2 pl-2 text-left">Categories</h3>
+        <ul id="categories-list" class="flex flex-col gap-2 font-medium text-left">
           <li id="all-trees-btn"
-            class="w-full h-[35px] flex items-center justify-center rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition"
+            class="px-2 py-2 rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition text-left"
             onclick="setActiveCategory(this); loadAllTrees()">
             All Trees
           </li>
         </ul>
       </div>
+
+
+
 
       <!-- Middle Content: All Trees Cards -->
       <div class="w-full lg:w-2/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="trees-container">

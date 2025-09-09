@@ -7,8 +7,6 @@ const treesContainer = document.getElementById("trees-container");
 const categoriesList = document.getElementById("categories-list");
 const cartItemsContainer = document.getElementById("cart-items");
 const cartTotalEl = document.getElementById("cart-total");
-const modal = document.getElementById("tree-modal");
-const closeModalBtn = document.getElementById("close-modal");
 
 // Spinner
 const spinner = document.createElement("div");
@@ -41,7 +39,7 @@ function displayCategories(plants) {
     const li = document.createElement("li");
     li.textContent = cat;
     li.className =
-      "w-[250px] h-[35px] flex items-center justify-center rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition";
+      "px-2 py-2 rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition text-left";
     li.onclick = () => {
       setActiveCategory(li);
       filterByCategory(cat);
@@ -55,12 +53,14 @@ function setActiveCategory(selectedEl) {
   const allButtons = document.querySelectorAll("#categories-list li");
   allButtons.forEach(btn => {
     btn.className =
-      "w-[250px] h-[35px] flex items-center justify-center rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition";
+      "px-2 py-2 rounded-lg cursor-pointer text-gray-800 hover:bg-[#54caf2] transition text-left";
   });
 
   selectedEl.className =
-    "w-[250px] h-[35px] flex items-center justify-center rounded-lg cursor-pointer text-white bg-[#15803d] transition";
+    "px-2 py-2 rounded-lg cursor-pointer text-white bg-[#15803d] transition text-left";
 }
+
+
 
 // Display trees
 function displayTrees(plants) {
@@ -101,6 +101,7 @@ function displayTrees(plants) {
 
 // Open modal
 function openTreeModal(tree) {
+  const modal = document.getElementById("tree-modal");
   const modalContent = document.getElementById("modal-content");
 
   modalContent.innerHTML = `
@@ -113,13 +114,21 @@ function openTreeModal(tree) {
     </div>
   `;
 
-  modal.showModal();
-}
+  // Show modal
+  modal.classList.remove("hidden");
 
-// Close modal
-closeModalBtn.addEventListener("click", () => {
-  modal.close();
-});
+  // Close modal on ✖ click
+  document.getElementById("close-modal").onclick = () => {
+    modal.classList.add("hidden");
+  };
+
+  // Close modal on clicking outside modal content
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  };
+}
 
 // Filter by category
 function filterByCategory(category) {
@@ -166,5 +175,5 @@ function renderCart() {
   cartTotalEl.textContent = `৳ ${total}`;
 }
 
-// Call API
+// Initialize
 fetchPlants();
