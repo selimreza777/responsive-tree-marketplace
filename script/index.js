@@ -60,8 +60,6 @@ function setActiveCategory(selectedEl) {
     "px-2 py-2 rounded-lg cursor-pointer text-white bg-[#15803d] transition text-left";
 }
 
-
-
 // Display trees
 function displayTrees(plants) {
   treesContainer.innerHTML = "";
@@ -89,7 +87,7 @@ function displayTrees(plants) {
     `;
     treesContainer.appendChild(card);
 
-    // Tree name click -> modal
+    // Tree name click -> open modal
     const treeNameEl = card.querySelector(".tree-name");
     treeNameEl.addEventListener("click", () => openTreeModal(tree));
 
@@ -99,11 +97,9 @@ function displayTrees(plants) {
   });
 }
 
-// Open modal
+// Open modal using DaisyUI checkbox
 function openTreeModal(tree) {
-  const modal = document.getElementById("tree-modal");
   const modalContent = document.getElementById("modal-content");
-
   modalContent.innerHTML = `
     <div class="flex flex-col gap-4">
       <img src="${tree.image}" alt="${tree.name}" class="w-full h-64 object-cover rounded-md">
@@ -114,20 +110,8 @@ function openTreeModal(tree) {
     </div>
   `;
 
-  // Show modal
-  modal.classList.remove("hidden");
-
-  // Close modal on ✖ click
-  document.getElementById("close-modal").onclick = () => {
-    modal.classList.add("hidden");
-  };
-
-  // Close modal on clicking outside modal content
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.classList.add("hidden");
-    }
-  };
+  // Check the hidden checkbox to open modal
+  document.getElementById("tree-modal-toggle").checked = true;
 }
 
 // Filter by category

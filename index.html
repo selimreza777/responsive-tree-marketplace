@@ -133,14 +133,19 @@
     </div>
 
     <!-- DaisyUI Modal -->
-    <dialog id="tree-modal" class="modal modal-bottom sm:modal-middle">
+    <input type="checkbox" id="tree-modal-toggle" class="modal-toggle" />
+    <div class="modal">
       <div class="modal-box relative">
-        <button id="close-modal" class="absolute top-2 right-2 text-gray-600 btn btn-sm">✖</button>
         <div id="modal-content"></div>
+        <!-- Close button bottom-right -->
+        <div class="modal-action justify-end">
+          <label for="tree-modal-toggle" class="btn btn-sm">Close</label>
+        </div>
       </div>
-    </dialog>
+    </div>
   </section>
   <!-- Choose Your Trees Section End -->
+
 
 
   <!-- About Campaign Section Start -->
