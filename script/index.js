@@ -23,7 +23,7 @@ async function fetchPlants() {
     const data = await res.json();
     allPlants = data.plants;
     displayCategories(allPlants);
-    displayTrees(allPlants); // show all trees on page load
+    displayTrees(allPlants);
   } catch (error) {
     console.error("Error fetching plants:", error);
   } finally {
@@ -87,17 +87,15 @@ function displayTrees(plants) {
     `;
     treesContainer.appendChild(card);
 
-    // Tree name click -> open modal
     const treeNameEl = card.querySelector(".tree-name");
     treeNameEl.addEventListener("click", () => openTreeModal(tree));
 
-    // Add to cart button
     const addBtn = card.querySelector(".add-to-cart-btn");
     addBtn.addEventListener("click", () => addToCart(tree));
   });
 }
 
-// Open modal using DaisyUI checkbox
+// Open modal
 function openTreeModal(tree) {
   const modalContent = document.getElementById("modal-content");
   modalContent.innerHTML = `
@@ -109,8 +107,6 @@ function openTreeModal(tree) {
       <p class="text-gray-700">${tree.description}</p>
     </div>
   `;
-
-  // Check the hidden checkbox to open modal
   document.getElementById("tree-modal-toggle").checked = true;
 }
 
@@ -125,9 +121,15 @@ function loadAllTrees() {
   displayTrees(allPlants);
 }
 
-// Add to cart
+// Add to cart (same row, increase quantity)
 function addToCart(tree) {
-  cart.push(tree);
+  // check if tree already in cart
+  const existing = cart.find(item => item.id === tree.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...tree, quantity: 1 });
+  }
   renderCart();
 }
 
@@ -137,23 +139,33 @@ function removeFromCart(index) {
   renderCart();
 }
 
-// Render cart
+// Render cart (same row, quantity increases)
 function renderCart() {
   cartItemsContainer.innerHTML = "";
-
   let total = 0;
+
   cart.forEach((tree, index) => {
-    total += tree.price;
-    const item = document.createElement("div");
-    item.className = "flex justify-between items-center p-2 border rounded-md";
-    item.innerHTML = `
-      <span>${tree.name}</span>
-      <div class="flex items-center gap-2">
-        <span>৳ ${tree.price}</span>
-        <button class="text-red-500 font-bold" onclick="removeFromCart(${index})">❌</button>
-      </div>
-    `;
-    cartItemsContainer.appendChild(item);
+    const itemTotal = tree.price * tree.quantity;
+    total += itemTotal;
+
+    // check if row exists for this item
+    const existingRow = document.getElementById(`cart-item-${tree.id}`);
+    if (existingRow) {
+      existingRow.querySelector(".item-quantity").textContent = `x${tree.quantity}`;
+      existingRow.querySelector(".item-price").textContent = `৳ ${itemTotal}`;
+    } else {
+      const item = document.createElement("div");
+      item.className = "flex justify-between items-center p-2 border rounded-md";
+      item.id = `cart-item-${tree.id}`;
+      item.innerHTML = `
+        <span>${tree.name} <span class="item-quantity">x${tree.quantity}</span></span>
+        <div class="flex items-center gap-2">
+          <span class="item-price">৳ ${itemTotal}</span>
+          <button class="text-red-500 font-bold" onclick="removeFromCart(${index})">❌</button>
+        </div>
+      `;
+      cartItemsContainer.appendChild(item);
+    }
   });
 
   cartTotalEl.textContent = `৳ ${total}`;
